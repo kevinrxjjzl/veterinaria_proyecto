@@ -17,7 +17,7 @@ conexion.connect(err => {
     console.error("Error de conexion:", err);
     return;
   }
-  console.log("Conectado a la base de datos Veterinaria goo");
+  console.log("Conectado a la base de datos Veterinaria lest go");
 });
 
 app.get("/duenos", (req, res) => {
@@ -83,3 +83,4 @@ app.get("/citas", (req, res) => {
 app.listen(port, () => {
   console.log(`Servidor corriendo en http://localhost:${port}`);
 });
+
