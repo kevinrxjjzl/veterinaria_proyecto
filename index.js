@@ -8,7 +8,7 @@ app.use(express.json());
 const conexion = mysql.createConnection({
   host: "localhost",
   user: "root",
-  password: "12345",
+  password: "kevinJJZL78923190",
   database: "veterinaria"
 });
 
@@ -30,14 +30,15 @@ app.get("/duenos", (req, res) => {
   });
 });
 
-app.get('/mascotas/nombre', (req, res) => {
-    const sql = 'SELECT nombre FROM Mascotas';
-    conexion.query(sql, (err, result) => {
-        if (err) res.status(500).send('Error al obtener nombres de mascotas');
-        else res.send(result);
-    });
+app.get("/mascotas", (req, res) => {
+  conexion.query("SELECT * FROM Mascotas", (err, results) => {
+    if (err) {
+      console.error("Error Mascotas:", err);
+      return res.status(500).json({ error: err.message });
+    }
+    res.json(results);
+  });
 });
-
 
 app.get("/historial_medico", (req, res) => {
   conexion.query("SELECT * FROM Historial_Medico", (err, results) => {
