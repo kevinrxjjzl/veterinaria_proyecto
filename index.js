@@ -17,7 +17,7 @@ conexion.connect(err => {
     console.error("Error de conexion:", err);
     return;
   }
-  console.log("Conectado a la base de datos Veterinariak");
+  console.log("Conectado a la base de datos Veterinaria lest go");
 });
 
 app.get("/duenos", (req, res) => {
@@ -30,15 +30,14 @@ app.get("/duenos", (req, res) => {
   });
 });
 
-app.get("/mascotas", (req, res) => {
-  conexion.query("SELECT * FROM Mascotas", (err, results) => {
-    if (err) {
-      console.error("Error Mascotas:", err);
-      return res.status(500).json({ error: err.message });
-    }
-    res.json(results);
-  });
+app.get('/mascotas/nombre', (req, res) => {
+    const sql = 'SELECT nombre FROM Mascotas';
+    conexion.query(sql, (err, result) => {
+        if (err) res.status(500).send('Error al obtener nombres de mascotas');
+        else res.send(result);
+    });
 });
+
 
 app.get("/historial_medico", (req, res) => {
   conexion.query("SELECT * FROM Historial_Medico", (err, results) => {
