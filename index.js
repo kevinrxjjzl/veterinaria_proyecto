@@ -17,7 +17,7 @@ conexion.connect(err => {
     console.error("Error de conexion:", err);
     return;
   }
-  console.log("Conectado a la base de datos Veterinaria lest go");
+  console.log("Conectado a la base de datos Veterinariak");
 });
 
 app.get("/duenos", (req, res) => {
