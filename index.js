@@ -8,7 +8,11 @@ app.use(express.json());
 const conexion = mysql.createConnection({
   host: "localhost",
   user: "root",
+<<<<<<< HEAD
   password: "",
+=======
+  password: "",
+>>>>>>> 3b827404844de8400ebf85cafbe0a70b9425664c
   database: "veterinaria"
 });
 
@@ -61,7 +65,7 @@ app.get("/vacunas", (req, res) => {
 });
 
 app.get("/vacunas_aplicadas", (req, res) => {
-  conexion.query("SELECT * FROM Vacunas_Aplicadas", (err, results) => {
+  conexion.query("SELECT id_mascota, fecha_aplicacion, proxima_aplicacion FROM Vacunas_Aplicadas", (err, results) => {
     if (err) {
       console.error("Error Vacunas_Aplicadas:", err);
       return res.status(500).json({ error: err.message });
@@ -71,7 +75,7 @@ app.get("/vacunas_aplicadas", (req, res) => {
 });
 
 app.get("/citas", (req, res) => {
-  conexion.query("SELECT motivo FROM Citas", (err, results) => {
+  conexion.query("SELECT * FROM Citas", (err, results) => {
     if (err) {
       console.error("Error Citas:", err);
       return res.status(500).json({ error: err.message });
