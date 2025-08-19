@@ -8,7 +8,7 @@ app.use(express.json());
 const conexion = mysql.createConnection({
   host: "localhost",
   user: "root",
-  password: "kevinJJZL78923190",
+  password: "",
   database: "veterinaria"
 });
 
@@ -31,7 +31,7 @@ app.get("/duenos", (req, res) => {
 });
 
 app.get("/mascotas", (req, res) => {
-  conexion.query("SELECT * FROM Mascotas", (err, results) => {
+  conexion.query("SELECT nombre, especie, raza FROM Mascotas", (err, results) => {
     if (err) {
       console.error("Error Mascotas:", err);
       return res.status(500).json({ error: err.message });
