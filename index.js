@@ -61,7 +61,7 @@ app.get("/vacunas", (req, res) => {
 });
 
 app.get("/vacunas_aplicadas", (req, res) => {
-  conexion.query("SELECT * FROM Vacunas_Aplicadas", (err, results) => {
+  conexion.query("SELECT id_mascota, fecha_aplicacion, proxima_aplicacion FROM Vacunas_Aplicadas", (err, results) => {
     if (err) {
       console.error("Error Vacunas_Aplicadas:", err);
       return res.status(500).json({ error: err.message });
