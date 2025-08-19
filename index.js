@@ -1,7 +1,7 @@
 const express = require("express");
 const mysql = require("mysql2");
 const app = express();
-const port = 3000;
+const port = 3001;
 
 app.use(express.json());
 
@@ -41,7 +41,7 @@ app.get("/mascotas", (req, res) => {
 });
 
 app.get("/historial_medico", (req, res) => {
-  conexion.query("SELECT * FROM Historial_Medico", (err, results) => {
+  conexion.query("SELECT fecha, tratamiento, descripcion FROM Historial_Medico", (err, results) => {
     if (err) {
       console.error("Error Historial_Medico:", err);
       return res.status(500).json({ error: err.message });
