@@ -8,11 +8,15 @@ app.use(express.json());
 const conexion = mysql.createConnection({
   host: "localhost",
   user: "root",
+<<<<<<< Updated upstream
 <<<<<<< HEAD
   password: "",
 =======
   password: "",
 >>>>>>> 3b827404844de8400ebf85cafbe0a70b9425664c
+=======
+  password: "kevinJJZL78923190",
+>>>>>>> Stashed changes
   database: "veterinaria"
 });
 
@@ -25,7 +29,7 @@ conexion.connect(err => {
 });
 
 app.get("/duenos", (req, res) => {
-  conexion.query("SELECT * FROM Duenos", (err, results) => {
+  conexion.query("SELECT nombre, apellido, email FROM Duenos", (err, results) => {
     if (err) {
       console.error("Error Duenos:", err);
       return res.status(500).json({ error: err.message });
