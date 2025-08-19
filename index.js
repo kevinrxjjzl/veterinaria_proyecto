@@ -8,7 +8,11 @@ app.use(express.json());
 const conexion = mysql.createConnection({
   host: "localhost",
   user: "root",
-  password: "12345",
+<<<<<<< HEAD
+  password: "",
+=======
+  password: "",
+>>>>>>> 3b827404844de8400ebf85cafbe0a70b9425664c
   database: "veterinaria"
 });
 
@@ -17,7 +21,7 @@ conexion.connect(err => {
     console.error("Error de conexion:", err);
     return;
   }
-  console.log("Conectado a la base de datos Veterinariak");
+  console.log("Conectado a la base de datos Veterinaria lest go");
 });
 
 app.get("/duenos", (req, res) => {
@@ -31,7 +35,7 @@ app.get("/duenos", (req, res) => {
 });
 
 app.get("/mascotas", (req, res) => {
-  conexion.query("SELECT * FROM Mascotas", (err, results) => {
+  conexion.query("SELECT nombre, especie, raza FROM Mascotas", (err, results) => {
     if (err) {
       console.error("Error Mascotas:", err);
       return res.status(500).json({ error: err.message });
@@ -61,7 +65,7 @@ app.get("/vacunas", (req, res) => {
 });
 
 app.get("/vacunas_aplicadas", (req, res) => {
-  conexion.query("SELECT * FROM Vacunas_Aplicadas", (err, results) => {
+  conexion.query("SELECT id_mascota, fecha_aplicacion, proxima_aplicacion FROM Vacunas_Aplicadas", (err, results) => {
     if (err) {
       console.error("Error Vacunas_Aplicadas:", err);
       return res.status(500).json({ error: err.message });
