@@ -69,7 +69,7 @@ CREATE TABLE IF NOT EXISTS Citas (
         ON DELETE CASCADE
 );
 
--- Inserciones ajustadas con IDs manuales
+
 INSERT INTO Duenos (id_dueno, nombre, apellido, telefono, email, direccion) VALUES
 (1, 'Ana', 'Gomez', '555-123-4567', 'ana.gomez@email.com', 'Calle Sol 123, Ciudad'),
 (2, 'Carlos', 'Rodriguez', '555-987-6543', 'carlos.r@email.com', 'Avenida Luna 456, Ciudad'),
