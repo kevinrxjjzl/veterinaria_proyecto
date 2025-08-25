@@ -4,7 +4,6 @@ const puerto = 3000;
 
 app.use(express.json());
 
-// Importar rutas
 const duenosRouter = require('./duenos');
 const mascotasRouter = require('./mascotas');
 const historialRouter = require('./historial');
@@ -12,7 +11,7 @@ const vacunasRouter = require('./vacunas');
 const vacunasAplicadasRouter = require('./vacunasAplicadas');
 const citasRouter = require('./citas');
 
-// Usar rutas
+
 app.use('/veterinaria/duenos', duenosRouter);
 app.use('/veterinaria/mascotas', mascotasRouter);
 app.use('/veterinaria/historial', historialRouter);

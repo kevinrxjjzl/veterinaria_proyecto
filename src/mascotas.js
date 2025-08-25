@@ -14,6 +14,38 @@ router.get('/', (req, res) => {
     });
 });
 
+router.get('/conduenos/:id', (req, res) => {
+    let id = req.params.id;
+    let sql = `
+        SELECT 
+            m.nombre AS nombre_mascota,
+            m.especie,
+            m.raza,
+            m.fecha_nacimiento,
+            m.sexo,
+            d.nombre AS nombre_dueno,
+            d.apellido,
+            d.telefono,
+            d.email,
+            d.direccion
+        FROM Mascotas m
+        INNER JOIN Duenos d ON m.id_dueno = d.id_dueno
+        WHERE m.id_mascota = ?
+    `;
+    conexion.query(sql, [id], (err, result) => {
+        if (err) {
+            console.log("error en la consulta");
+            res.status(500).send('Error al obtener datos');
+        } else {
+            if (result.length === 0) {
+                res.status(404).send('Mascota no encontrada');
+            } else {
+                res.send(result[0]); 
+            }
+        }
+    });
+});
+
 router.post('/', (req, res) => {
   let data = {
     id_mascota: req.body.id_mascota,
